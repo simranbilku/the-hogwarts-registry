@@ -10,6 +10,7 @@ public class RegistryApplication {
 		SpringApplication.run(RegistryApplication.class, args);
 
 		System.out.println("Helloooooooooooooooooo");
+		//hello test
 	}
 
 }
