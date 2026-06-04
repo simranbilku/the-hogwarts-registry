@@ -10,3 +10,5 @@
 /dataSources.local.xml
 #ignores railway credentials
 application.properties
+.idea/
+*.iml
