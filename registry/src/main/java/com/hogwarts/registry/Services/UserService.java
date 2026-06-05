@@ -42,6 +42,15 @@ public class UserService {
         return mapToResponse(savedUser);
     }
 
+    // get user by id
+    public UserResponse getUserById(Long id) {
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        return mapToResponse(user);
+    }
+
     private UserResponse mapToResponse(User user) {
         return new UserResponse(
                 user.getUserId(),
