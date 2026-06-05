@@ -1,4 +1,4 @@
-package com.hogwarts.registry.dtos;
+package com.hogwarts.registry.DTOs;
 
 import com.hogwarts.registry.models.House;
 

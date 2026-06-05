@@ -1,12 +1,23 @@
-package com.hogwarts.registry.dtos;
+package com.hogwarts.registry.DTOs;
 
 import com.hogwarts.registry.models.House;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class CreateUserRequest {
 
+    @NotBlank
     private String username;
+
+    @NotBlank
+    @Email
     private String email;
+
+    @NotBlank
     private String password;
+
+    @NotNull
     private House house;
 
 
