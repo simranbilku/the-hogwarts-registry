@@ -1,7 +1,7 @@
 package com.hogwarts.registry.services;
 
-import com.hogwarts.registry.dtos.CreateUserRequest;
-import com.hogwarts.registry.dtos.UserResponse;
+import com.hogwarts.registry.DTOs.CreateUserRequest;
+import com.hogwarts.registry.DTOs.UserResponse;
 import com.hogwarts.registry.models.User;
 import com.hogwarts.registry.repos.UserRepository;
 import org.springframework.stereotype.Service;

@@ -1,12 +1,12 @@
 package com.hogwarts.registry.Controllers;
 
-import com.hogwarts.registry.dtos.CreateUserRequest;
-import com.hogwarts.registry.dtos.UserResponse;
+import com.hogwarts.registry.DTOs.CreateUserRequest;
+import com.hogwarts.registry.DTOs.UserResponse;
 import com.hogwarts.registry.services.UserService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
