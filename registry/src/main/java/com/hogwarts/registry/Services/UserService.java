@@ -1,4 +1,4 @@
-package com.hogwarts.registry.services;
+package com.hogwarts.registry.Services;
 
 import com.hogwarts.registry.DTOs.CreateUserRequest;
 import com.hogwarts.registry.DTOs.UserResponse;
@@ -32,7 +32,9 @@ public class UserService {
         }
 
         User user = new User();
-        user.setUsername(newUserRequest.getUsername());
+        user.setFirstName(newUserRequest.getFirstName());
+        user.setLastName(newUserRequest.getLastName());
+        user.setAge(newUserRequest.getAge());
         user.setEmail(newUserRequest.getEmail());
         user.setPassword(newUserRequest.getPassword());
         user.setHouse(newUserRequest.getHouse());
@@ -54,7 +56,9 @@ public class UserService {
     private UserResponse mapToResponse(User user) {
         return new UserResponse(
                 user.getUserId(),
-                user.getUsername(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getAge(),
                 user.getEmail(),
                 user.getHouse()
         );

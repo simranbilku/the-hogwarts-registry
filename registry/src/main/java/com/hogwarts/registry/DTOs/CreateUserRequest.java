@@ -8,7 +8,13 @@ import jakarta.validation.constraints.NotNull;
 public class CreateUserRequest {
 
     @NotBlank
-    private String username;
+    private String firstName;
+
+    @NotBlank
+    private String lastName;
+
+    @NotNull
+    private Integer age;
 
     @NotBlank
     @Email
@@ -20,19 +26,32 @@ public class CreateUserRequest {
     @NotNull
     private House house;
 
-
     public CreateUserRequest() {
     }
 
-
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
     public String getEmail() {
         return email;
@@ -42,7 +61,6 @@ public class CreateUserRequest {
         this.email = email;
     }
 
-
     public String getPassword() {
         return password;
     }
@@ -50,7 +68,6 @@ public class CreateUserRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public House getHouse() {
         return house;
