@@ -1,5 +1,6 @@
 package com.hogwarts.registry.models;
 import jakarta.persistence.*;
+import com.hogwarts.registry.models.House;
 
 @Entity
 @Table(name = "users")
