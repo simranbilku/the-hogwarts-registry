@@ -1,6 +1,5 @@
 package com.hogwarts.registry.models;
 import jakarta.persistence.*;
-import com.hogwarts.registry.models.House;
 
 @Entity
 @Table(name = "users")
@@ -9,7 +8,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    private String username;
+    private String firstName;
+    private String lastName;
+    private Integer age;
     private String email;
     private String password;
 
@@ -20,11 +21,37 @@ public class User {
 
     }
 
-    public User(String username, String email, String password, House house) {
-        this.username = username;
+    public User(String firstName, String lastName, int age, String email, String password, House house) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
         this.email = email;
         this.password = password;
         this.house = house;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Long getUserId() {
@@ -33,14 +60,6 @@ public class User {
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
