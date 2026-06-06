@@ -1,4 +1,4 @@
-package com.hogwarts.registry.services;
+package com.hogwarts.registry.Services;
 
 import com.hogwarts.registry.DTOs.CreateUserRequest;
 import com.hogwarts.registry.DTOs.UserResponse;
