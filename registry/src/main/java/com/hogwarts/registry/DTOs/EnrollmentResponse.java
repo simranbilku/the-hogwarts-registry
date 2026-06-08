@@ -2,7 +2,7 @@ package com.hogwarts.registry.DTOs;
 
 public class EnrollmentResponse {
     private String message;
-    private UserWithCoursesResponse user;
+    private final UserWithCoursesResponse user;
 
     public EnrollmentResponse(String message, UserWithCoursesResponse user) {
         this.message = message;

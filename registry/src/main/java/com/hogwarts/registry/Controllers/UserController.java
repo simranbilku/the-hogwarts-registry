@@ -5,10 +5,12 @@ import com.hogwarts.registry.DTOs.EnrollmentResponse;
 import com.hogwarts.registry.DTOs.UserResponse;
 import com.hogwarts.registry.DTOs.UserWithCoursesResponse;
 import com.hogwarts.registry.Services.UserService;
+import com.hogwarts.registry.Services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
@@ -41,7 +43,6 @@ public class UserController {
     public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
 
         UserResponse user = userService.getUserById(id);
-
         return ResponseEntity.ok(user);
     }
 

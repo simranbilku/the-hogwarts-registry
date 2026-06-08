@@ -38,7 +38,9 @@ public class UserService {
         }
 
         User user = new User();
-        user.setUsername(newUserRequest.getUsername());
+        user.setFirstName(newUserRequest.getFirstName());
+        user.setLastName(newUserRequest.getLastName());
+        user.setAge(newUserRequest.getAge());
         user.setEmail(newUserRequest.getEmail());
         user.setPassword(newUserRequest.getPassword());
         user.setHouse(newUserRequest.getHouse());
@@ -60,7 +62,9 @@ public class UserService {
     private UserResponse mapToResponse(User user) {
         return new UserResponse(
                 user.getUserId(),
-                user.getUsername(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getAge(),
                 user.getEmail(),
                 user.getHouse()
         );
@@ -93,11 +97,13 @@ public class UserService {
         System.out.println("CourseDTOs: " + courseDTOs);
 
         return new UserWithCoursesResponse(
+
                 savedUser.getUserId(),
-                savedUser.getUsername(),
-                savedUser.getEmail(),
+                savedUser.getFirstName(),
+                savedUser.getLastName(),
                 savedUser.getHouse(),
                 courseDTOs
+
         );
     }
 }
