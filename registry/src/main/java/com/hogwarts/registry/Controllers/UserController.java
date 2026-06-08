@@ -53,7 +53,6 @@ public class UserController {
         EnrollmentResponse response = new EnrollmentResponse("Successfully enrolled", enrolledUser);
         return ResponseEntity.ok(response);
     }
-
 }
 
 
