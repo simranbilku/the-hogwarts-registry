@@ -39,17 +39,18 @@ public class UserController {
 
     // get user by id
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserWithCoursesResponse> getUserById(@PathVariable Long id) {
 
-        UserResponse user = userService.getUserById(id);
+        UserWithCoursesResponse user = userService.getUserById(id);
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping("/{userId}/enroll/{courseId}")
+    @PostMapping("/{userId}/enroll")
     public ResponseEntity<EnrollmentResponse> EnrollInCourse(
-            @PathVariable Long userId, @PathVariable Long courseId
+            @PathVariable Long userId, @RequestBody List<Long> courseIds
     ){
-        UserWithCoursesResponse enrolledUser = userService.enrollInCourse(userId, courseId);
+        UserWithCoursesResponse enrolledUser = userService.enrollInCourse(userId, courseIds);
+
         EnrollmentResponse response = new EnrollmentResponse("Successfully enrolled", enrolledUser);
         return ResponseEntity.ok(response);
     }

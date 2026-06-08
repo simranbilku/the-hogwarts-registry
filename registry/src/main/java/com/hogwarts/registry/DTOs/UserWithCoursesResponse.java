@@ -9,13 +9,27 @@ public class UserWithCoursesResponse {
     private String firstName;
     private String lastName;
     private List<CourseDTO> courses;
+    private Integer age;
+    private String email;
+    private House house;
 
 
-    public UserWithCoursesResponse(Long userId, String firstName, String lastName, List<CourseDTO> courses) {
+    public UserWithCoursesResponse(
+            Long userId,
+            String firstName,
+            String lastName,
+            List<CourseDTO> courses,
+            Integer age,
+            String email,
+            House house
+    ) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.courses = courses;
+        this.age = age;
+        this.email = email;
+        this.house = house;
     }
 
     public String getFirstName() {
@@ -33,5 +47,17 @@ public class UserWithCoursesResponse {
 
     public List<CourseDTO> getCourses() {
         return courses;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public House getHouse() {
+        return house;
     }
 }

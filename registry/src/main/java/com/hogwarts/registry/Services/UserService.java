@@ -51,12 +51,12 @@ public class UserService {
     }
 
     // get user by id
-    public UserResponse getUserById(Long id) {
+    public UserWithCoursesResponse getUserById(Long id) {
 
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        return mapToResponse(user);
+        return mapToUserWithCourseResponse(user);
     }
 
     private UserResponse mapToResponse(User user) {
@@ -70,21 +70,25 @@ public class UserService {
         );
     }
 
-    public UserWithCoursesResponse enrollInCourse(Long userId, Long courseId){
+    public UserWithCoursesResponse enrollInCourse(Long userId, List<Long> courseIds){
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
-        Course course = courseRepository.findById(courseId)
-                .orElseThrow(() -> new IllegalArgumentException("Course not found"));
 
+        for(Long courseId : courseIds){
+            Course course = courseRepository.findById(courseId)
+                    .orElseThrow(() -> new IllegalArgumentException("Course not found"));
 
-        user.getCourses().add(course);
+            user.getCourses().add(course);
 
-        System.out.println("Courses after add: " + user.getCourses());
+        }
 
         User savedUser = userRepository.save(user);
-        System.out.println("Courses after save: " + savedUser.getCourses());
+        return mapToUserWithCourseResponse(savedUser);
 
-        List<CourseDTO> courseDTOs = savedUser.getCourses().stream()
+    }
+
+    private UserWithCoursesResponse mapToUserWithCourseResponse(User user){
+        List<CourseDTO> courseDTOs = user.getCourses().stream()
                 .map(userCourse -> {
                     CourseDTO dto = new CourseDTO();
                     dto.setId(userCourse.getId());
@@ -94,15 +98,14 @@ public class UserService {
                 })
                 .toList();
 
-        System.out.println("CourseDTOs: " + courseDTOs);
-
         return new UserWithCoursesResponse(
-
-                savedUser.getUserId(),
-                savedUser.getFirstName(),
-                savedUser.getLastName(),
-                courseDTOs
-
+                user.getUserId(),
+                user.getFirstName(),
+                user.getLastName(),
+                courseDTOs,
+                user.getAge(),
+                user.getEmail(),
+                user.getHouse()
         );
     }
 }
