@@ -1,6 +1,10 @@
 package com.hogwarts.registry.models;
 import jakarta.persistence.*;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -17,11 +21,19 @@ public class User {
     @Enumerated(EnumType.STRING)
     private House house;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_courses",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses = new ArrayList<>();
+
     public User() {
 
     }
 
-    public User(String firstName, String lastName, int age, String email, String password, House house) {
+    public User(String firstName, String lastName, Integer age, String email, String password, House house) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -46,11 +58,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -84,5 +96,13 @@ public class User {
 
     public void setHouse(House house) {
         this.house = house;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

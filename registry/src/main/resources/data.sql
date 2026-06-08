@@ -1,0 +1,10 @@
+
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Transfiguration', 'The art of altering the form or appearance of an object or creature.', 'Darcy Harris Paget');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Charms', 'Spells that alter a target''s properties or give them new functions.', 'Simran Bilku');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Potions', 'The science of brewing magical concoctions with specific effects.', 'Severus Snape');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('History of Magic', 'A theoretical study of the historical events of the wizarding world.', 'Cuthbert Binns');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Defence Against the Dark Arts', 'Learning to protect yourself against dark magic and dangerous creatures.', 'Ihsan Kabir');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Astronomy', 'Practical stargazing and learning movements of celestial bodies.', 'Aurora Sinistra');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Herbology', 'The study of magical and mundane plants and fungi.', 'Pomona Sprout');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Muggle Studies', 'An examination of the Muggle world from a wizarding perspective.', 'Ahmed Abshir');
+INSERT IGNORE INTO courses (name, description, professor_name) VALUES ('Flying', 'The practice of flying on broomsticks, a key skill for Quidditch.', 'Sahra Salah');

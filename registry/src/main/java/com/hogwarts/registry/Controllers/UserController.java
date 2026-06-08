@@ -1,7 +1,9 @@
 package com.hogwarts.registry.Controllers;
 
 import com.hogwarts.registry.DTOs.CreateUserRequest;
+import com.hogwarts.registry.DTOs.EnrollmentResponse;
 import com.hogwarts.registry.DTOs.UserResponse;
+import com.hogwarts.registry.DTOs.UserWithCoursesResponse;
 import com.hogwarts.registry.Services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/api/users")
 public class UserController {
@@ -40,8 +42,16 @@ public class UserController {
     public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
 
         UserResponse user = userService.getUserById(id);
-
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/{userId}/enroll/{courseId}")
+    public ResponseEntity<EnrollmentResponse> EnrollInCourse(
+            @PathVariable Long userId, @PathVariable Long courseId
+    ){
+        UserWithCoursesResponse enrolledUser = userService.enrollInCourse(userId, courseId);
+        EnrollmentResponse response = new EnrollmentResponse("Successfully enrolled", enrolledUser);
+        return ResponseEntity.ok(response);
     }
 }
 

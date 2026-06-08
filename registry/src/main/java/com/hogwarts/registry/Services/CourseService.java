@@ -1,18 +1,22 @@
 package com.hogwarts.registry.Services;
 
 import com.hogwarts.registry.DTOs.CourseDTO;
+import com.hogwarts.registry.DTOs.CourseDetail;
 import com.hogwarts.registry.models.Course;
 import com.hogwarts.registry.repos.CourseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
+
 
 
 @Service
 public class CourseService {
-    @Autowired
-    CourseRepository courseRepository;
+
+    private final CourseRepository courseRepository;
+
+    public CourseService(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
 
     public List<CourseDTO> getAllCourses(){
         List<Course> courses = courseRepository.findAll();
@@ -30,13 +34,17 @@ public class CourseService {
                 .toList();
     }
 
-    public Optional<Course> getCourseById(Long id){
-        return courseRepository.findById(id);
+    public CourseDetail getCourseById(Long id){
+        Course course = courseRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Course does not exist"));
+
+        return new CourseDetail(
+                course.getId(),
+                course.getName(),
+                course.getDescription(),
+                course.getProfessorName()
+        );
     }
 
-    public Course createCourse(Course course){
-        courseRepository.save(course);
-        return course;
-    }
 }
 
