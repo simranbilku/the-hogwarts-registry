@@ -1,6 +1,9 @@
 package com.hogwarts.registry.models;
 import jakarta.persistence.*;
-import com.hogwarts.registry.models.House;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -15,6 +18,14 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private House house;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_courses",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses = new ArrayList<>();
 
     public User() {
 
@@ -65,5 +76,13 @@ public class User {
 
     public void setHouse(House house) {
         this.house = house;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

@@ -1,7 +1,9 @@
 package com.hogwarts.registry.Controllers;
 
 import com.hogwarts.registry.DTOs.CreateUserRequest;
+import com.hogwarts.registry.DTOs.EnrollmentResponse;
 import com.hogwarts.registry.DTOs.UserResponse;
+import com.hogwarts.registry.DTOs.UserWithCoursesResponse;
 import com.hogwarts.registry.Services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/api/users")
 public class UserController {
@@ -41,6 +44,16 @@ public class UserController {
 
         return ResponseEntity.ok(user);
     }
+
+    @PostMapping("/{userId}/enroll/{courseId}")
+    public ResponseEntity<EnrollmentResponse> EnrollInCourse(
+            @PathVariable Long userId, @PathVariable Long courseId
+    ){
+        UserWithCoursesResponse enrolledUser = userService.enrollInCourse(userId, courseId);
+        EnrollmentResponse response = new EnrollmentResponse("Successfully enrolled", enrolledUser);
+        return ResponseEntity.ok(response);
+    }
+
 }
 
 
