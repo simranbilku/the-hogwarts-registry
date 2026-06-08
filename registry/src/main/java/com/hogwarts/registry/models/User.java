@@ -33,7 +33,7 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, int age, String email, String password, House house) {
+    public User(String firstName, String lastName, Integer age, String email, String password, House house) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -58,11 +58,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

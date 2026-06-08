@@ -101,7 +101,6 @@ public class UserService {
                 savedUser.getUserId(),
                 savedUser.getFirstName(),
                 savedUser.getLastName(),
-                savedUser.getHouse(),
                 courseDTOs
 
         );

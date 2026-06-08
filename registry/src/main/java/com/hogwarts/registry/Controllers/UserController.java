@@ -5,7 +5,6 @@ import com.hogwarts.registry.DTOs.EnrollmentResponse;
 import com.hogwarts.registry.DTOs.UserResponse;
 import com.hogwarts.registry.DTOs.UserWithCoursesResponse;
 import com.hogwarts.registry.Services.UserService;
-import com.hogwarts.registry.Services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
