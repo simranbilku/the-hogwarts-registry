@@ -95,6 +95,13 @@ public class UserService {
             Course course = courseRepository.findById(courseId)
                     .orElseThrow(() -> new IllegalArgumentException("Course not found"));
 
+            boolean alreadyEnrolled = user.getCourses().stream()
+                    .anyMatch(c -> c.getId().equals(courseId));
+
+            if (alreadyEnrolled) {
+                throw new IllegalArgumentException("User is already enrolled in course: " + course.getName());
+            }
+
             user.getCourses().add(course);
 
         }
