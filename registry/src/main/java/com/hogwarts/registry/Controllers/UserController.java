@@ -54,6 +54,13 @@ public class UserController {
         EnrollmentResponse response = new EnrollmentResponse("Successfully enrolled", enrolledUser);
         return ResponseEntity.ok(response);
     }
+
+    // delete user
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 }
 
 
