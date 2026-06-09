@@ -8,12 +8,18 @@ import com.hogwarts.registry.models.Course;
 import com.hogwarts.registry.models.User;
 import com.hogwarts.registry.repos.CourseRepository;
 import com.hogwarts.registry.repos.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserService {
+
+    private static final Logger logger =
+            LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
     private final CourseRepository courseRepository;
@@ -48,6 +54,17 @@ public class UserService {
         User savedUser = userRepository.save(user);
 
         return mapToResponse(savedUser);
+    }
+
+    // delete user
+    public void deleteUser(Long id) {
+
+        if (!userRepository.existsById(id)) {
+            throw new EntityNotFoundException(String.format("User with ID: %d, was not found", id));
+        }
+
+        userRepository.deleteById(id);
+        logger.info("Deleted User with ID: {}", id);
     }
 
     // get user by id
